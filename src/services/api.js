@@ -4,10 +4,12 @@
  * Time: 下午1:24
  */
 import axios from 'axios'
+import VueCookie from 'vue-cookie'
 
 axios.interceptors.request.use(config => {
   console.log(config)
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+  config.headers['Authorization'] = 'Bearer ' + VueCookie.get('token')
 
   return config
 }, error => {

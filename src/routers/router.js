@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Register from '@/views/Register'
 import Home from '@/views/Home'
 import VueCookie from 'vue-cookie'
 import oauth from '@/services/oauth'
@@ -7,7 +8,8 @@ import oauth from '@/services/oauth'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/register', component: Home }
+  { path: '/home', component: Home },
+  { path: '/register', component: Register }
 ];
 
 const router = new VueRouter({
@@ -28,8 +30,10 @@ router.beforeEach((to, from, next) => {
         return
       }
 
-      VueCookie.set('token', ret.data.token, ret.data.expires_in)
-      VueCookie.set('user', ret.data.user, ret.data.expires_in)
+      debugger
+      const expires = new Date(ret.data.expired_at * 1000)
+      VueCookie.set('token', ret.data.token, expires.toGMTString())
+      VueCookie.set('user', ret.data.user, expires.toGMTString())
       next()
     })
   } else {
