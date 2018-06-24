@@ -10,6 +10,10 @@ class QrCode {
   getByCode(qr) {
     return api.http.get(config.apiHost + '/qrcode/view?qr=' + qr)
   }
+
+  create() {
+    return api.http.post(config.apiHost + '/qrcode/create')
+  }
 }
 
 export default new QrCode()

@@ -8,7 +8,7 @@ import config from 'config/config'
 
 class Aliyun {
   sendVoice(qr) {
-    return api.http.post(config.apiHost + '/aliyun/call', { qr })
+    return api.http.post(config.apiHost + '/aliyun/call', { 'qr_code': qr })
   }
   sendCode(mobile) {
     return api.http.post(config.apiHost + '/aliyun/sms', { mobile })

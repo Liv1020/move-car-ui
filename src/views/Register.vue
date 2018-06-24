@@ -71,9 +71,9 @@
 
 <script>
   import { Swipe, SwipeItem, CellGroup, Field, Button, Cell, Toast } from 'vant'
-  import VueQrcode from '@xkeshi/vue-qrcode';
-  import user from '@/services/user';
-  import aliyun from '@/services/aliyun';
+  import VueQrcode from '@xkeshi/vue-qrcode'
+  import user from '@/services/user'
+  import aliyun from '@/services/aliyun'
 
   export default {
     name: 'Register',
