@@ -12,7 +12,10 @@ class Oauth {
   }
 
   getRedirectUrl() {
-    return config.apiHost + '/oauth/index'
+    return 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.appID +
+      '&redirect_uri=' + encodeURI(window.location.href) +
+      '&response_type=code&scope=snsapi_userinfo' +
+      '&state=STATE#wechat_redirect'
   }
 }
 
