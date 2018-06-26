@@ -15,6 +15,7 @@
   import { Toast } from 'vant'
   import VueQrcode from '@xkeshi/vue-qrcode';
   import qrcode from '@/services/qrcode';
+  import config from 'config/config';
 
   export default {
     name: 'Qrcode',
@@ -34,7 +35,7 @@
           return
         }
 
-        this.url = 'http://mc.liv1020.com:8010/home?qr=' + ret.data.id
+        this.url = config.host + '/home?qr=' + ret.data.id
       })
     }
   }
