@@ -29,7 +29,10 @@
         label="手机号"
         placeholder="输入手机号码"
       >
-        <van-button slot="button" size="small" type="primary" @click="sendCode">获取验证码</van-button>
+        <van-button slot="button" size="small" type="primary" @click="sendCode" :disabled="this.send.disable">
+          <span v-if="this.send.disable">{{ send.second }} s</span>
+          <span v-else>获取验证码</span>
+        </van-button>
       </van-field>
       <van-field
         center
@@ -102,6 +105,11 @@
           plateNumber: '',
           qrCode: qrId,
           qrUrl: qrcode.getQrcodeUrl(qrId)
+        },
+        send: {
+          disable: false,
+          second: 90,
+          interval: 0
         }
       }
     },
@@ -113,11 +121,15 @@
             return
           }
 
-          alert('注册成功')
+          Toast('绑定成功')
         })
       },
 
       sendCode() {
+        if (this.send.disable) {
+          return
+        }
+
         if (this.form.mobile === '') {
           Toast('手机号码不能为空')
           return
@@ -129,7 +141,16 @@
             return
           }
 
-          alert('发送成功')
+          this.send.disable = true
+          this.send.second = 90
+          this.send.interval = setInterval(() => {
+            this.send.second--
+            if (this.send.second === 0) {
+              clearInterval(this.send.interval)
+              this.send.disable = false
+              this.send.second = 90
+            }
+          }, 1000)
         })
       }
     }
