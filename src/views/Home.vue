@@ -1,18 +1,31 @@
 <style scoped>
-
+  .bg {
+    background: #fff url(http://www.myliangche.com/img/okbj.jpg) no-repeat left top;
+  }
 </style>
 
 <template>
-  <div>{{ status }}</div>
+  <div class="bg">
+    <van-row type="flex" justify="center">
+      <van-col span="12" style="margin-top: 18%;">
+        <img src="http://www.myliangche.com/img/benren4.png" width="100%">
+        <div style="text-align: center">{{ status }}</div>
+      </van-col>
+    </van-row>
+  </div>
 </template>
 
 <script>
   import qrcode from '@/services/qrcode'
   import aliyun from '@/services/aliyun'
-  import { Toast } from 'vant'
+  import { Toast, Row, Col } from 'vant'
 
   export default {
     name: 'Home',
+    components: {
+      [Row.name]: Row,
+      [Col.name]: Col
+    },
     data() {
       return {
         status: '正在发起呼叫'

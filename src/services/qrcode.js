@@ -14,6 +14,10 @@ class QrCode {
   create() {
     return api.http.post(config.apiHost + '/qrcode/create')
   }
+
+  getQrcodeUrl(code) {
+    return config.host + '/home?qr=' + code
+  }
 }
 
 export default new QrCode()

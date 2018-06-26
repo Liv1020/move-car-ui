@@ -74,6 +74,7 @@
   import VueQrcode from '@xkeshi/vue-qrcode'
   import user from '@/services/user'
   import aliyun from '@/services/aliyun'
+  import qrcode from '@/services/qrcode'
 
   export default {
     name: 'Register',
@@ -100,7 +101,7 @@
           code: '',
           plateNumber: '',
           qrCode: qrId,
-          qrUrl: 'http://mc.liv1020.com:8010/home?qr=' + qrId
+          qrUrl: qrcode.getQrcodeUrl(qrId)
         }
       }
     },
