@@ -8,7 +8,7 @@ import config from 'config/config'
 
 class Oauth {
   getUserByCode(code) {
-    return api.http.post(config.apiHost + '/oauth/code', { code: code })
+    return api.http.post(config.apiHost + '/wechat/oauth', { code: code })
   }
 
   getRedirectUrl() {

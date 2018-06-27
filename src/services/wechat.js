@@ -9,17 +9,15 @@ import config from 'config/config'
 import wx from 'weixin-js-sdk'
 
 class Wechat {
-  constructor() {
-    const self = this
-    self.sdk = null
-    api.http.get(config.apiHost + '/js/config').then((ret) => {
+  sdk() {
+    return api.http.get(config.apiHost + '/js/config').then((ret) => {
       if (ret.status !== 0) {
-        console.log(ret.message)
+        alert(ret.message)
         return
       }
 
       const params = Object.assign({ debug: true, jsApiList: ['scanQRCode'] }, ret.data)
-      self.sdk = wx.config(params);
+      wx.config(params);
     })
   }
 }
