@@ -16,6 +16,9 @@ class QrCode {
   }
 
   getQrcodeUrl(code) {
+    if (!code) {
+      return ''
+    }
     return config.host + '/home?qr=' + code
   }
 }

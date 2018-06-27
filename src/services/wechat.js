@@ -16,7 +16,7 @@ class Wechat {
         return
       }
 
-      const params = Object.assign({ debug: true, jsApiList: ['scanQRCode'] }, ret.data)
+      const params = Object.assign({ debug: false, jsApiList: ['scanQRCode'] }, ret.data)
       wx.config(params);
     })
   }
