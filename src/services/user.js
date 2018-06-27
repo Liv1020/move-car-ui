@@ -10,6 +10,10 @@ class UserService {
   update({ mobile, code, plateNumber, qrCode }) {
     return api.http.post(config.apiHost + '/user/update', { mobile, code, 'plate_number': plateNumber, 'qr_code': qrCode })
   }
+
+  isSubscribe() {
+    return api.http.post(config.apiHost + '/user/is-subscribe')
+  }
 }
 
 export default new UserService()

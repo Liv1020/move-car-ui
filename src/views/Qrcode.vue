@@ -3,11 +3,11 @@
 </style>
 
 <template>
-  <div v-if="url === ''">
-    正在生成二维码
-  </div>
-  <div v-else>
-    <qrcode :value="url" :options="{ size: 200 }"></qrcode>
+  <div>
+    <div v-for="item in items" style="float: left; padding: 15px">
+      <qrcode :value="item.url" :options="{ size: 200 }"></qrcode>
+      <div style="text-align: center">{{ item.code }}</div>
+    </div>
   </div>
 </template>
 
@@ -24,18 +24,23 @@
     },
     data() {
       return {
-        url: ''
+        items: []
       }
     },
     created() {
-      qrcode.create().then((ret) => {
-        if (ret.status !== 0) {
-          Toast(ret.message)
-          return
-        }
+      for (var i = 0; i < 200; i++) {
+        qrcode.create().then((ret) => {
+          if (ret.status !== 0) {
+            Toast(ret.message)
+            return
+          }
 
-        this.url = qrcode.getQrcodeUrl(ret.data.id)
-      })
+          this.items.push({
+            url: qrcode.getQrcodeUrl(ret.data.id),
+            code: ret.data.id
+          })
+        })
+      }
     }
   }
 </script>

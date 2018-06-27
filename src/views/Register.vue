@@ -93,6 +93,18 @@
       [Cell.name]: Cell,
       [VueQrcode.name]: VueQrcode
     },
+    created() {
+      user.isSubscribe().then((ret) => {
+        if (ret.status !== 0) {
+          Toast(ret.message)
+          return
+        }
+
+        if (ret.data.is_subscribe === 0) {
+          this.$router.push({ path: '/subscribe' })
+        }
+      })
+    },
     data() {
       const qrId = this.$route.query['qr']
       return {
