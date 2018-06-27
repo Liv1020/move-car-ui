@@ -28,6 +28,7 @@
         v-model="form.mobile"
         label="手机号"
         placeholder="输入手机号码"
+        type="number"
       >
         <van-button slot="button" size="small" type="primary" @click="sendCode" :disabled="this.send.disable">
           <span v-if="this.send.disable">{{ send.second }} s</span>
@@ -40,6 +41,7 @@
         v-model="form.code"
         label="验证码"
         placeholder="输入验证码"
+        type="number"
       >
       </van-field>
       <van-field
@@ -57,7 +59,7 @@
         <template slot v-else>
           <div>您是否已领取挪车静电贴二维码？</div>
           <div>
-            <van-button type="primary" size="large" class="btn-scan-qr">
+            <van-button type="primary" size="large" class="btn-scan-qr" @click="scan">
               [已领取，请点击扫描静电贴二维码]
             </van-button>
           </div>
@@ -78,6 +80,7 @@
   import user from '@/services/user'
   import aliyun from '@/services/aliyun'
   import qrcode from '@/services/qrcode'
+  import wx from '@/services/wechat'
 
   export default {
     name: 'Register',
@@ -152,6 +155,16 @@
             }
           }, 1000)
         })
+      },
+      scan() {
+        wx.sdk.scanQRCode({
+          needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+          scanType: ['qrCode'], // 可以指定扫二维码还是一维码，默认二者都有
+          success: function(res) {
+            const result = res.resultStr
+            alert(result)
+          }
+        });
       }
     }
   }
