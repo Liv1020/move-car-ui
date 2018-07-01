@@ -14,6 +14,10 @@ class UserService {
   isSubscribe() {
     return api.http.post(config.apiHost + '/user/is-subscribe')
   }
+
+  confirm({ wait }) {
+    return api.http.post(config.apiHost + '/user/confirm', { wait })
+  }
 }
 
 export default new UserService()

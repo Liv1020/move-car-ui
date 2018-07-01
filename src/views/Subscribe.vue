@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    请微信关注【智捷挪车】继续操作
+    <img src="static/subscribe.jpg"/>
   </div>
 </template>
 

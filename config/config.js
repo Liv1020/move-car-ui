@@ -6,5 +6,6 @@
 export default {
   host: process.env.HOST,
   apiHost: process.env.API_HOST,
-  appID: 'wx351aab24bd75e0ab'
+  appID: 'wx351aab24bd75e0ab',
+  webSocket: process.env.WEB_SOCKET,
 }
