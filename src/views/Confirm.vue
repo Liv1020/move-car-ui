@@ -9,7 +9,7 @@
     </van-cell-group>
     <van-radio-group v-model="form.wait">
       <van-cell-group>
-        <van-cell v-for="item in items" :title="item.wait + '分钟'" clickable @click="form.wait = item.wait">
+        <van-cell v-for="item in items" :key="item.id" :title="item.wait + '分钟'" clickable @click="form.wait = item.wait">
           <van-radio :name="item.wait" />
         </van-cell>
       </van-cell-group>

@@ -8,7 +8,6 @@ import VueCookie from 'vue-cookie'
 
 axios.interceptors.request.use(config => {
   console.log(config)
-  config.withCredentials = true
   config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
   if (VueCookie.get('token') != null) {
     config.headers['Authorization'] = 'Bearer ' + VueCookie.get('token')
