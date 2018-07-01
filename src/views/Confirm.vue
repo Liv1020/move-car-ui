@@ -25,16 +25,16 @@
 </template>
 
 <script>
-  import { CellGroup, Field, Button, Cell, Toast } from 'vant'
-  import user from '@sservices/user'
+  import { RadioGroup, CellGroup, Button, Cell, Toast } from 'vant'
+  import user from '@/services/user'
 
   export default {
     name: 'Wait',
     components: {
       [CellGroup.name]: CellGroup,
-      [Field.name]: Field,
+      [RadioGroup.name]: RadioGroup,
       [Button.name]: Button,
-      [Cell.name]: Cell,
+      [Cell.name]: Cell
     },
     data() {
       return {
