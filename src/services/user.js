@@ -5,6 +5,7 @@
  */
 import api from './api'
 import config from 'config/config'
+import VueCookie from 'vue-cookie'
 
 class UserService {
   update({ mobile, code, plateNumber, qrCode }) {
@@ -17,6 +18,10 @@ class UserService {
 
   confirm({ wait }) {
     return api.http.post(config.apiHost + '/user/confirm', { wait })
+  }
+
+  getWebSocket(qr) {
+    return config.webSocket + '?token=' + VueCookie.get('token') + '&qr=' + qr
   }
 }
 

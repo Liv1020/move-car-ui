@@ -18,6 +18,7 @@
 <script>
   import qrcode from '@/services/qrcode'
   import aliyun from '@/services/aliyun'
+  import user from '@/services/user'
   import { Toast, Row, Col } from 'vant'
 
   export default {
@@ -54,8 +55,15 @@
             return
           }
 
-          this.status = '呼叫成功，车主马上来挪车'
+          this.status = '亲爱的车主，小智已通知车主，请耐心等待'
         })
+
+        const uri = user.getWebSocket(this.$route.query['qr'])
+        const ws = new WebSocket(uri)
+        ws.onmessage = (e) => {
+          const res = JSON.parse(e.data)
+          this.status = '亲爱的车主，小智已通知车主，车主' + res.data.wait.value + '分钟之后赶来'
+        }
       })
     }
   }
