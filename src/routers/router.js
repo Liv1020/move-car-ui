@@ -42,8 +42,8 @@ router.beforeEach((to, from, next) => {
       }
 
       const expires = new Date(ret.data.expired_at * 1000)
-      VueCookie.set('token', ret.data.token, expires.toGMTString())
-      VueCookie.set('user', ret.data.user, expires.toGMTString())
+      VueCookie.set('token', ret.data.token, { expires: expires })
+      VueCookie.set('user', ret.data.user, { expires: expires })
       next()
     })
   } else {
