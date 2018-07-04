@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import { RadioGroup, CellGroup, Button, Cell, Toast } from 'vant'
+  import { RadioGroup, CellGroup, Button, Cell, Toast, Radio } from 'vant'
   import user from '@/services/user'
 
   export default {
@@ -34,7 +34,8 @@
       [CellGroup.name]: CellGroup,
       [RadioGroup.name]: RadioGroup,
       [Button.name]: Button,
-      [Cell.name]: Cell
+      [Cell.name]: Cell,
+      [Radio.name]: Radio
     },
     data() {
       return {
