@@ -60,7 +60,7 @@
           <div>您是否已领取挪车静电贴二维码？</div>
           <div>
             <van-button type="primary" size="large" class="btn-scan-qr" @click="scan">
-              [已领取，请点击扫描静电贴二维码]
+              [已领取，请点击扫描二维码]
             </van-button>
           </div>
         </template>
