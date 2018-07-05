@@ -5,6 +5,7 @@ import Home from '@/views/Home'
 import Qrcode from '@/views/Qrcode'
 import Subscribe from '@/views/Subscribe'
 import Confirm from '@/views/Confirm'
+import Success from '@/views/Success'
 import VueCookie from 'vue-cookie'
 import oauth from '@/services/oauth'
 
@@ -15,7 +16,8 @@ const routes = [
   { path: '/register', component: Register },
   { path: '/qrcode', component: Qrcode },
   { path: '/subscribe', component: Subscribe },
-  { path: '/confirm', component: Confirm }
+  { path: '/confirm', component: Confirm },
+  { path: '/success', component: Success }
 ];
 
 const router = new VueRouter({
@@ -43,7 +45,7 @@ router.beforeEach((to, from, next) => {
 
       const expires = new Date(ret.data.expired_at * 1000)
       VueCookie.set('token', ret.data.token, { expires: expires })
-      VueCookie.set('user', ret.data.user, { expires: expires })
+      VueCookie.set('user', JSON.stringify(ret.data.user), { expires: expires })
       next()
     })
   } else {

@@ -49,6 +49,12 @@
           return
         }
 
+        const auth = user.getAuth()
+        if (ret.data.user_id === auth.id) {
+          this.$router.push({ path: '/success' })
+          return
+        }
+
         aliyun.sendVoice(this.$route.query['qr']).then((ret) => {
           if (ret.status !== 0) {
             this.status = ret.message

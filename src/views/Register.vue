@@ -137,7 +137,7 @@
             return
           }
 
-          Toast('绑定成功')
+          this.$router.push({ path: '/success' })
         })
       },
 

@@ -23,6 +23,11 @@ class UserService {
   getWebSocket(qr) {
     return config.webSocket + '?token=' + VueCookie.get('token') + '&qr=' + qr
   }
+
+  getAuth() {
+    const str = VueCookie.get('user')
+    return JSON.parse(str)
+  }
 }
 
 export default new UserService()
