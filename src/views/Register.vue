@@ -1,12 +1,7 @@
 <style scoped>
-  img {
+  .swipe-image {
     width: 100%;
     height: 240px;
-    display: block;
-    padding: 30px 60px;
-    box-sizing: border-box;
-    background-color: #fff;
-    pointer-events: none;
   }
   .btn-scan-qr {
     width: 100%;
@@ -18,7 +13,7 @@
   <div id="home">
     <van-swipe :autoplay="3000">
       <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img v-lazy="image" >
+        <img class="swipe-image" v-lazy="image" >
       </van-swipe-item>
     </van-swipe>
     <van-cell-group>
@@ -57,7 +52,7 @@
           <qrcode :value="form.qrUrl" :options="{ size: 200 }"></qrcode>
         </template>
         <template slot v-else>
-          <div>您是否已领取挪车静电贴二维码？</div>
+          <div>您是否已领取挪车二维码？</div>
           <div>
             <van-button type="primary" size="large" class="btn-scan-qr" @click="scan">
               [已领取，请点击扫描二维码]
@@ -110,10 +105,10 @@
       const qrId = this.$route.query['qr']
       return {
         images: [
-          'https://img.yzcdn.cn/public_files/2017/09/05/3bd347e44233a868c99cf0fe560232be.jpg',
-          'https://img.yzcdn.cn/public_files/2017/09/05/c0dab461920687911536621b345a0bc9.jpg',
-          'https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg',
-          'https://img.yzcdn.cn/public_files/2017/09/05/fd08f07665ed67d50e11b32a21ce0682.jpg'
+          'static/1.jpeg',
+          'static/2.jpeg',
+          'static/3.jpeg',
+          'static/4.jpeg'
         ],
         form: {
           mobile: '',
