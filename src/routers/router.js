@@ -8,6 +8,7 @@ import Confirm from '@/views/Confirm'
 import Success from '@/views/Success'
 import VueCookie from 'vue-cookie'
 import oauth from '@/services/oauth'
+import { Toast } from 'vant'
 
 Vue.use(VueRouter)
 
@@ -39,7 +40,7 @@ router.beforeEach((to, from, next) => {
 
     oauth.getUserByCode(to.query['code']).then((ret) => {
       if (ret.status !== 0) {
-        window.location.href = oauth.getRedirectUrl()
+        Toast(ret.message)
         return
       }
 

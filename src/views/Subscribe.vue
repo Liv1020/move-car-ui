@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <img src="static/subscribe.jpg"/>
+    <img src="static/subscribe.jpg" style="width: 100%"/>
   </div>
 </template>
 

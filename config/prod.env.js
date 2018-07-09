@@ -1,6 +1,6 @@
 module.exports = {
   NODE_ENV: '"production"',
   HOST: '"http://mc.liv1020.com"',
-  API_HOST: '"http://47.93.19.226:8080/frontend"',
-  WEB_SOCKET: '"ws://47.93.19.226:8080/frontend/ws"'
+  API_HOST: '"http://mc-api.liv1020.com/frontend"',
+  WEB_SOCKET: '"ws://mc-api.liv1020.com/frontend/ws"'
 }
