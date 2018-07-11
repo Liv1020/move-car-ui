@@ -29,7 +29,8 @@
     },
     data() {
       return {
-        status: '正在发起呼叫'
+        status: '正在发起呼叫',
+        wait: 0
       }
     },
     created() {
@@ -61,7 +62,9 @@
             return
           }
 
-          this.status = '亲爱的车主，小智已通知车主，请耐心等待'
+          if (this.wait === 0) {
+            this.status = '亲爱的车主，小智已通知车主，请耐心等待'
+          }
         })
 
         const uri = user.getWebSocket(this.$route.query['qr'])
@@ -69,6 +72,7 @@
         ws.onmessage = (e) => {
           const res = JSON.parse(e.data)
           this.status = '亲爱的车主，小智已通知车主，车主' + res.data.wait.value + '分钟之后赶来'
+          this.wait = res.data.wait.value
         }
       })
     }
