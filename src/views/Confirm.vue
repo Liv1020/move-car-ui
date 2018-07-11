@@ -27,6 +27,8 @@
 <script>
   import { RadioGroup, CellGroup, Button, Cell, Toast, Radio } from 'vant'
   import user from '@/services/user'
+  import wechat from '@/services/wechat'
+  import wx from 'weixin-js-sdk'
 
   export default {
     name: 'Wait',
@@ -58,6 +60,10 @@
           {
             id: 4,
             wait: 15
+          },
+          {
+            id: 4,
+            wait: 120
           }
         ]
       }
@@ -66,6 +72,11 @@
       submit() {
         user.confirm(this.form).then(() => {
           Toast('提交成功')
+          wechat.sdk().then(() => {
+            wx.ready(() => {
+              wx.closeWindow()
+            })
+          })
         })
       }
     }
