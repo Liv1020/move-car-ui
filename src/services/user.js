@@ -28,6 +28,10 @@ class UserService {
     const str = VueCookie.get('user')
     return JSON.parse(str)
   }
+
+  search() {
+    return api.http.get(config.apiHost + '/user/search')
+  }
 }
 
 export default new UserService()

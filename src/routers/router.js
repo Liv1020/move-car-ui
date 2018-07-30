@@ -6,6 +6,7 @@ import Qrcode from '@/views/Qrcode'
 import Subscribe from '@/views/Subscribe'
 import Confirm from '@/views/Confirm'
 import Success from '@/views/Success'
+import User from '@/views/User'
 import VueCookie from 'vue-cookie'
 import oauth from '@/services/oauth'
 import { Toast } from 'vant'
@@ -18,7 +19,8 @@ const routes = [
   { path: '/qrcode', component: Qrcode },
   { path: '/subscribe', component: Subscribe },
   { path: '/confirm', component: Confirm },
-  { path: '/success', component: Success }
+  { path: '/success', component: Success },
+  { path: '/user', component: User }
 ];
 
 const router = new VueRouter({
@@ -28,6 +30,11 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.path === '/qrcode') {
+    next()
+    return
+  }
+
+  if (to.path === '/user') {
     next()
     return
   }
