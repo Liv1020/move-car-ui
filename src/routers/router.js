@@ -34,11 +34,6 @@ router.beforeEach((to, from, next) => {
     return
   }
 
-  if (to.path === '/user') {
-    next()
-    return
-  }
-
   if (VueCookie.get('token') === null) {
     if (to.query['code'] === undefined) {
       window.location.href = oauth.getRedirectUrl()
