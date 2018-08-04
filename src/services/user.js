@@ -30,7 +30,7 @@ class UserService {
   }
 
   search() {
-    return api.http.get(config.apiHost + '/user/search')
+    return api.http.get(config.apiHost + '/user/search?page=1&size=100000')
   }
 }
 
